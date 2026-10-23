@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Dark",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base", "name": "Ground", "color": "#0B1033" },
+				{ "slug": "surface", "name": "Surface", "color": "#141A4A" },
+				{ "slug": "mist", "name": "Mist", "color": "#1B2260" },
+				{ "slug": "deep", "name": "Deep", "color": "#1B2370" },
+				{ "slug": "contrast", "name": "Ink", "color": "#F7F6FB" },
+				{ "slug": "muted", "name": "Muted", "color": "#B4B9E0" },
+				{ "slug": "line", "name": "Hairline", "color": "#2D3585" },
+				{ "slug": "brand", "name": "Cobalt (brand)", "color": "#7C95FF" },
+				{ "slug": "on-brand", "name": "Text on cobalt", "color": "#0B1033" },
+				{ "slug": "sky", "name": "Sky (decoration only)", "color": "#5B8CFF" },
+				{ "slug": "accent", "name": "Hot pink (accent)", "color": "#FF3D8B" },
+				{ "slug": "on-accent", "name": "Text on pink", "color": "#0B1033" }
+			]
+		}
+	}
+}

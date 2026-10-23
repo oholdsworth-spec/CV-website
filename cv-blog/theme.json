@@ -1,0 +1,123 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": { "contentSize": "1200px", "wideSize": "1360px" },
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"palette": [
+				{ "slug": "base", "name": "Ground", "color": "#F7F6FB" },
+				{ "slug": "surface", "name": "Surface", "color": "#FFFFFF" },
+				{ "slug": "mist", "name": "Mist", "color": "#E4E9FF" },
+				{ "slug": "deep", "name": "Deep", "color": "#0B1033" },
+				{ "slug": "contrast", "name": "Ink", "color": "#0B1033" },
+				{ "slug": "muted", "name": "Muted", "color": "#4A4F73" },
+				{ "slug": "line", "name": "Hairline", "color": "#D9DBEA" },
+				{ "slug": "brand", "name": "Cobalt (brand)", "color": "#2B3DF0" },
+				{ "slug": "on-brand", "name": "Text on cobalt", "color": "#FFFFFF" },
+				{ "slug": "sky", "name": "Sky (decoration only)", "color": "#5B8CFF" },
+				{ "slug": "accent", "name": "Hot pink (accent)", "color": "#FF3D8B" },
+				{ "slug": "on-accent", "name": "Text on pink", "color": "#0B1033" }
+			],
+			"gradients": [
+				{
+					"slug": "day",
+					"name": "Day",
+					"gradient": "linear-gradient(135deg, #FF3D8B 0%, #6B4DFF 55%, #2B3DF0 100%)"
+				},
+				{
+					"slug": "dusk",
+					"name": "Dusk",
+					"gradient": "linear-gradient(160deg, #0B1033 0%, #2B3DF0 100%)"
+				},
+				{
+					"slug": "glow",
+					"name": "Glow",
+					"gradient": "radial-gradient(circle at 80% 15%, rgba(255,61,139,.75) 0%, rgba(255,61,139,0) 55%)"
+				}
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"fontFamilies": [
+				{
+					"slug": "display",
+					"name": "Space Grotesk",
+					"fontFamily": "'Space Grotesk', system-ui, sans-serif",
+					"fontFace": [
+						{ "fontFamily": "Space Grotesk", "fontWeight": "600", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/space-grotesk-latin-600-normal.woff2"] }
+					]
+				},
+				{
+					"slug": "body",
+					"name": "Inter",
+					"fontFamily": "Inter, system-ui, sans-serif",
+					"fontFace": [
+						{ "fontFamily": "Inter", "fontWeight": "400", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/inter-latin-400-normal.woff2"] },
+						{ "fontFamily": "Inter", "fontWeight": "500", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/inter-latin-500-normal.woff2"] },
+						{ "fontFamily": "Inter", "fontWeight": "600", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/inter-latin-600-normal.woff2"] }
+					]
+				},
+				{
+					"slug": "mono",
+					"name": "JetBrains Mono",
+					"fontFamily": "'JetBrains Mono', ui-monospace, monospace",
+					"fontFace": [
+						{ "fontFamily": "JetBrains Mono", "fontWeight": "500", "fontStyle": "normal", "fontDisplay": "swap", "src": ["file:./assets/fonts/jetbrains-mono-latin-500-normal.woff2"] }
+					]
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "name": "Small", "size": "0.85rem" },
+				{ "slug": "base", "name": "Base", "size": "1rem" },
+				{ "slug": "large", "name": "Large", "size": "1.15rem" },
+				{ "slug": "x-large", "name": "Lede", "size": "clamp(1.05rem, 1rem + 0.2vw, 1.25rem)" },
+				{ "slug": "xx-large", "name": "Section heading", "size": "clamp(1.5rem, 1.2rem + 1.2vw, 2rem)" },
+				{ "slug": "huge", "name": "Hero", "size": "clamp(2.4rem, 1.5rem + 3.5vw, 4rem)" }
+			]
+		},
+		"spacing": { "units": ["px", "em", "rem", "%", "vw"] }
+	},
+	"styles": {
+		"color": { "background": "var:preset|color|base", "text": "var:preset|color|contrast" },
+		"typography": {
+			"fontFamily": "var:preset|font-family|body",
+			"fontSize": "var:preset|font-size|base",
+			"lineHeight": "1.55"
+		},
+		"spacing": {
+			"blockGap": "1.25rem",
+			"padding": { "left": "1rem", "right": "1rem", "top": "0", "bottom": "0" }
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|brand" },
+				":hover": { "typography": { "textDecoration": "none" } }
+			},
+			"heading": {
+				"typography": { "fontFamily": "var:preset|font-family|display", "fontWeight": "600", "lineHeight": "1.08", "letterSpacing": "-0.02em" }
+			},
+			"h1": { "typography": { "fontSize": "var:preset|font-size|huge" } },
+			"h2": { "typography": { "fontSize": "var:preset|font-size|xx-large" } },
+			"h3": { "typography": { "fontSize": "var:preset|font-size|large", "lineHeight": "1.2", "letterSpacing": "-0.01em" } },
+			"button": {
+				"color": { "background": "var:preset|color|accent", "text": "var:preset|color|on-accent" },
+				"typography": { "fontWeight": "600", "fontSize": "var:preset|font-size|base", "lineHeight": "1" },
+				"border": { "radius": "999px" },
+				"spacing": { "padding": { "top": "0.85em", "bottom": "0.85em", "left": "1.5em", "right": "1.5em" } },
+				":hover": { "color": { "background": "var:preset|color|accent", "text": "var:preset|color|on-accent" } }
+			}
+		}
+	},
+	"templateParts": [
+		{ "name": "header", "title": "Header", "area": "header" },
+		{ "name": "footer", "title": "Footer", "area": "footer" }
+	],
+	"customTemplates": [
+		{ "name": "cv-page", "title": "CV page", "postTypes": ["page"] }
+	]
+}

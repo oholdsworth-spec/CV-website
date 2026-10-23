@@ -1,0 +1,66 @@
+# Local test stack for the cv-blog theme.
+#   cp .env.example .env     (then change the passwords)
+#   docker compose up -d
+#   docker compose --profile setup run --rm wpcli     (one-off: installs WP, activates theme, creates Home + Blog pages and a menu)
+# Site: http://localhost:8080   Admin: http://localhost:8080/wp-admin
+
+services:
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - wp_data:/var/www/html
+      # Live-mounted theme: edit files in ./cv-blog and refresh the browser.
+      - ./cv-blog:/var/www/html/wp-content/themes/cv-blog
+
+  wpcli:
+    image: wordpress:cli
+    profiles: ["setup"]
+    user: "33:33"          # www-data in the wordpress image, so file ownership matches
+    depends_on:
+      - wordpress
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WP_URL: ${WP_URL:-http://localhost:8080}
+      WP_TITLE: ${WP_TITLE:-Oliver Holdsworth}
+      WP_ADMIN_USER: ${WP_ADMIN_USER:-admin}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+    volumes:
+      - wp_data:/var/www/html
+      - ./cv-blog:/var/www/html/wp-content/themes/cv-blog
+      - ./setup.sh:/setup.sh:ro
+    entrypoint: ["sh", "/setup.sh"]
+
+volumes:
+  db_data:
+  wp_data:

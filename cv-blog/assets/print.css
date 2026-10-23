@@ -1,0 +1,39 @@
+/* Print / save as PDF: force the light palette, drop site chrome and interactive bits. */
+@page { margin: 14mm; }
+
+@media print {
+	:root:root {
+		--wp--preset--color--base: #FFFFFF;
+		--wp--preset--color--surface: #FFFFFF;
+		--wp--preset--color--mist: #E4E9FF;
+		--wp--preset--color--contrast: #0B1033;
+		--wp--preset--color--muted: #3A3F63;
+		--wp--preset--color--line: #C9CCE0;
+		--wp--preset--color--brand: #2B3DF0;
+		--wp--preset--color--on-brand: #FFFFFF;
+		--cv-section-gap: 28px;
+	}
+
+	html { font-size: 11pt; }
+	body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+	/* Site chrome and interactive controls */
+	.ov-dialog, .ov-header, .ov-footer, .ov-cta, .wp-block-buttons, .wp-block-navigation { display: none !important; }
+
+	/* Compact, flat hero */
+	.ov-hero { margin-inline: 0 !important; }
+	.ov-hero { min-height: 0; padding: 18px 22px; border-radius: 12px; background: #0B1033; }
+	.ov-hero h1 { font-size: 28pt; max-width: none; }
+
+	/* Cards become flat blocks */
+	.ov-card { padding: 12px 14px; border-radius: 8px; }
+	.ov-grid { gap: 10px; }
+
+	/* Keep units together across pages */
+	.ov-card, .ov-step, .ov-tag, h2, h3 { break-inside: avoid; }
+	h2, h3 { break-after: avoid; }
+	.ov-step { padding-bottom: 20px; }
+
+	/* Show link targets for the few real links in post content */
+	.wp-block-post-content a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; color: var(--wp--preset--color--muted); }
+}

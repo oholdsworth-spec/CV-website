@@ -1,0 +1,38 @@
+<!-- wp:template-part {"slug":"header"} /-->
+<!-- wp:group {"tagName":"main","className":"ov-main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group ov-main">
+<!-- wp:group {"className":"ov-posts-head"} -->
+<div class="wp-block-group ov-posts-head">
+<!-- wp:query-title {"type":"search","level":1} /-->
+<!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search"} /-->
+</div>
+<!-- /wp:group -->
+<!-- wp:query {"queryId":0,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+<div class="wp-block-query">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":2}} -->
+<!-- wp:group {"className":"ov-card ov-post"} -->
+<div class="wp-block-group ov-card ov-post">
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
+<!-- wp:post-date {"className":"ov-eyebrow"} /-->
+<!-- wp:post-title {"level":3,"isLink":true} /-->
+<!-- wp:post-excerpt {"excerptLength":28} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>No posts yet.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+</div>
+<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer"} /-->
